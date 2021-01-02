@@ -64,7 +64,7 @@ public class StudentService {
 	}
 	
 	public ResponseEntity<Map<String,Boolean>> deleteStudentById(Long id){
-		Student student =studentRepository.findById(id).orElseThrow(()->new NotFoundByIdException("Student not exist with id:"+id));
+		Student student =studentRepository.findById(id).orElseThrow(()->new NotFoundByIdException("Student not exist with :"+id));
 		studentRepository.delete(student);
 		Map<String,Boolean> response=new HashMap<>();
 		response.put("deleted", Boolean.TRUE);

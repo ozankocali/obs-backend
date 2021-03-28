@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ozeeesoftware.obsbackend.model.Student;
-import com.ozeeesoftware.obsbackend.service.StudentService;
+import com.ozeeesoftware.obsbackend.service.StudentServiceImpl;
 
 
 
@@ -24,10 +24,10 @@ import com.ozeeesoftware.obsbackend.service.StudentService;
 public class StudentController {
 	
 	@Autowired
-	private StudentService studentService;
+	private StudentServiceImpl studentService;
 	
 	@GetMapping("/students")
-	public List<Student> getAllStudents(){
+	public ResponseEntity<List<Student>> getAllStudents(){
 		return studentService.getAllStudents();
 	}
 	
@@ -37,7 +37,7 @@ public class StudentController {
 	}
 	
 	@PostMapping("/students/save")
-	public Student createStudent(@RequestBody Student student) {
+	public ResponseEntity<Student> createStudent(@RequestBody Student student) {
 		return studentService.createStudent(student);
 	}
 	

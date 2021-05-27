@@ -54,7 +54,7 @@ public class StudentServiceTest {
 
 
     @Test
-    public void testCreatingNewStudent(){
+    public void testCreateNewStudent(){
         Student student=new Student(1,"John","Doe",100,100);
 
         when(studentRepository.save(student)).thenReturn(student);

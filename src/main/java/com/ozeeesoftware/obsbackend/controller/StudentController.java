@@ -3,6 +3,7 @@ package com.ozeeesoftware.obsbackend.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.ozeeesoftware.obsbackend.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ import com.ozeeesoftware.obsbackend.service.StudentServiceImpl;
 public class StudentController {
 	
 	@Autowired
-	private StudentServiceImpl studentService;
+	private StudentService studentService;
 	
 	@GetMapping
 	public ResponseEntity<List<Student>> getAllStudents(){

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@Column(name="first_name")
 	private String firstName;
 	@Column(name="last_name")
@@ -26,7 +26,7 @@ public class Student {
 	
 	public Student() {}
 
-	public Student(int id, String firstName, String lastName, int midTermExam, int finalExam) {
+	public Student(Long id, String firstName, String lastName, int midTermExam, int finalExam) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -39,7 +39,7 @@ public class Student {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

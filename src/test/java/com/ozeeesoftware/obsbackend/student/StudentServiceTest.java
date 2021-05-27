@@ -30,8 +30,8 @@ public class StudentServiceTest {
     @Test
     public void testGetAllStudents(){
         List<Student> studentList=new ArrayList<Student>();
-        studentList.add(new Student(1,"John","Doe",100,100));
-        studentList.add(new Student(2,"John2","Doe2",90,90));
+        studentList.add(new Student(1L,"John","Doe",100,100));
+        studentList.add(new Student(2L,"John2","Doe2",90,90));
 
         when(studentRepository.findAll()).thenReturn(studentList);
 
@@ -43,7 +43,7 @@ public class StudentServiceTest {
 
     @Test
     public void testGetStudentById(){
-        Student student=new Student(1,"John","Doe",100,100);
+        Student student=new Student(1L,"John","Doe",100,100);
 
         when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
 
@@ -52,10 +52,9 @@ public class StudentServiceTest {
 
 
 
-
     @Test
     public void testCreateNewStudent(){
-        Student student=new Student(1,"John","Doe",100,100);
+        Student student=new Student(1L,"John","Doe",100,100);
 
         when(studentRepository.save(student)).thenReturn(student);
 
@@ -65,10 +64,9 @@ public class StudentServiceTest {
     }
 
 
-
     @Test()
     public void testDeleteUser(){
-        Student student=new Student(1,"John","Doe",100,100);
+        Student student=new Student(1L,"John","Doe",100,100);
 
         when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
 

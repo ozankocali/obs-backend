@@ -108,7 +108,7 @@ public class StudentControllerTest {
 
         Student updatedStudent=new Student(1L,"John2","Doe2",100,100);
 
-        when(studentService.createStudent(existingStudent)).thenReturn(new ResponseEntity<Student>(updatedStudent,HttpStatus.OK));
+        when(studentService.updateStudent(  existingStudent)).thenReturn(new ResponseEntity<Student>(updatedStudent,HttpStatus.OK));
 
         mockMvc.perform(post(url+"/save")
                 .contentType(MediaType.APPLICATION_JSON)

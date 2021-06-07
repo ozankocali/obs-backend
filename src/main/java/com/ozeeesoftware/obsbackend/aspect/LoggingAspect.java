@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class LoggingAspect {
 
     Logger logger= LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.getAllStudents(..))")
+    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.StudentController.getAllStudents(..))")
     public void getAllStudentsPointcut(){
 
     }
@@ -33,7 +34,7 @@ public class LoggingAspect {
         logger.info("method invoked"+className+" : "+methodName+"()");
 
 
-        List<Student> object=(List<Student>) proceedingJoinPoint.proceed();
+        ResponseEntity<List<Student>> object= (ResponseEntity<List<Student>>) proceedingJoinPoint.proceed();
 
         logger.info(className+" : "+methodName+"()"+"Response : "+mapper.writeValueAsString(object));
 
@@ -42,7 +43,7 @@ public class LoggingAspect {
         return object;
     }
 
-    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.getStudentById(..))")
+    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.StudentController.getStudentById(..))")
     public void getStudentByIdPointcut(){
 
     }
@@ -57,16 +58,16 @@ public class LoggingAspect {
 
         logger.info("method invoked"+className+" : "+methodName+"()"+"arguments : "+mapper.writeValueAsString(array));
 
-        Student object=(Student)proceedingJoinPoint.proceed();
+        ResponseEntity<Student> object= (ResponseEntity<Student>) proceedingJoinPoint.proceed();
 
         logger.info(className+" : "+methodName+"()"+"Response : "+mapper.writeValueAsString(object));
 
-        logger.info("Student found with id: " + object.getId() +":"+mapper.writeValueAsString(object));
+        logger.info("Student found with id: " + object.getBody().getId() +":"+mapper.writeValueAsString(object));
 
         return object;
     }
 
-    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.createStudent(..))")
+    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.StudentController.createStudent(..))")
     public void saveStudentPointcut(){
 
     }
@@ -81,7 +82,7 @@ public class LoggingAspect {
 
         logger.info("method invoked"+className+" : "+methodName+"()"+"arguments : "+mapper.writeValueAsString(array));
 
-        Student object=(Student) proceedingJoinPoint.proceed();
+        ResponseEntity<Student> object= (ResponseEntity<Student>) proceedingJoinPoint.proceed();
 
         logger.info(className+" : "+methodName+"()"+"Response : "+mapper.writeValueAsString(object));
 
@@ -90,7 +91,7 @@ public class LoggingAspect {
         return object;
     }
 
-    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.updateStudent(..))")
+    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.StudentController.updateStudent(..))")
     public void updateStudentPointcut(){
 
     }
@@ -107,7 +108,7 @@ public class LoggingAspect {
 
         logger.info("method invoked"+className+" : "+methodName+"()"+"arguments : "+mapper.writeValueAsString(array));
 
-        Student object=(Student) proceedingJoinPoint.proceed();
+        ResponseEntity<Student> object= (ResponseEntity<Student>) proceedingJoinPoint.proceed();
 
 
 
@@ -115,12 +116,12 @@ public class LoggingAspect {
 
 
 
-        logger.info("Student with id : "+object.getId()+" updated as : "+mapper.writeValueAsString(object));
+        logger.info("Student with id : "+object.getBody().getId()+" updated as : "+mapper.writeValueAsString(object));
 
         return object;
     }
 
-    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.deleteStudentById(..))")
+    @Pointcut(value = "execution(* com.ozeeesoftware.obsbackend.controller.StudentController.deleteStudentById(..))")
     public void deleteStudentByIdPointcut(){
 
     }
@@ -136,7 +137,7 @@ public class LoggingAspect {
 
         logger.info("method invoked"+className+" : "+methodName+"()"+"arguments : "+mapper.writeValueAsString(array));
 
-        Student object=(Student) proceedingJoinPoint.proceed();
+        ResponseEntity<Student> object= (ResponseEntity<Student>) proceedingJoinPoint.proceed();
 
 
 
